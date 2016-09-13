@@ -8,7 +8,8 @@ int main(void)
     int cents10 = 0;
     int cents5 = 0;
     int cents1 = 0;
-  //  int index = 0;
+    int index = 0;
+    int index10 = 0; 
 
     do                  // проверка на целое число больше ноля 
     {
@@ -20,9 +21,18 @@ int main(void)
     while(sum <= 0); 
     
     cents25 = sum % 25;
-    cents10 = cents25 % 10;
-    cents5 = cents10 % 5;
-    cents1 = cents5 % 1;
-    printf ("%d\n", cents1);
+    index = (sum - cents25) / 25;
+    printf ("25 cents coins: %d,\n", index);
     
+    cents10 = cents25 % 10;
+    index10 = (cents25 - cents10) / 10;
+    printf ("10 cents coins: %d,\n", index10);
+    
+    cents5 = cents10 % 5;
+    index = (cents10 - cents5) / 5;
+    printf ("5 cents coins: %d,\n", index);
+    
+    cents1 = cents5 % 1;
+    index = (cents5 - cents1);
+    printf ("1 cents coins: %d,\n", index);
 }
