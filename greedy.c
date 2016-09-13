@@ -20,19 +20,19 @@ int main(void)
     }
     while(sum <= 0); 
     
-    cents25 = sum % 25;
+    cents25 = sum % 25; // определение количества монет номиналом 25
     index = (sum - cents25) / 25;
     printf ("25 cents coins: %d,\n", index);
     
-    cents10 = cents25 % 10;
+    cents10 = cents25 % 10;   // определение количества монет номиналом 10
     index10 = (cents25 - cents10) / 10;
     printf ("10 cents coins: %d,\n", index10);
     
-    cents5 = cents10 % 5;
+    cents5 = cents10 % 5;   // определение количества монет номиналом 5
     index = (cents10 - cents5) / 5;
     printf ("5 cents coins: %d,\n", index);
     
-    cents1 = cents5 % 1;
+    cents1 = cents5 % 1;   // определение количества монет номиналом 1
     index = (cents5 - cents1);
     printf ("1 cents coins: %d,\n", index);
 }
