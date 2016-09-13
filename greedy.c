@@ -3,49 +3,26 @@
 
 int main(void) 
 {
+    int sum = 0;
+    int cents25 = 0;
+    int cents10 = 0;
+    int cents5 = 0;
+    int cents1 = 0;
+  //  int index = 0;
 
-    int cents = 0;      //Необходимая сдача
-    int index = 0;      //количствво монет в остаче
-    int i = 0;
-
-    do                  // проверка целое ли число 
+    do                  // проверка на целое число больше ноля 
     {
         printf("You gave me number of cents: "); 
-        cents = GetInt();
-        if (cents == 0||cents <= 0)
+        sum = GetInt();
+        if (sum == 0||sum <= 0)
         printf("retype\n:");
     }
-    while(cents <= 0); 
+    while(sum <= 0); 
     
-    if (cents > 50){   //Количество по монет номиналом 50
-        for (i = 0; cents < 49; i++){
-        cents = cents - 50;
-        index = index + i;
-        }
-    }
-            else if (cents < 50){   //Количество по монет номиналом 25
-                for (i = 0; cents < 24; i++){
-                cents = cents - 25;
-                index = index + i;
-                }
-            }
-                else if (cents < 25){   //Количество по монет номиналом 10
-                    for (i = 0; cents < 9; i++){
-                    cents = cents - 10;
-                    index = index + i;
-                    }
-                }
-                    else if (cents < 10){   //Количество по монет номиналом 5
-                        for (i = 0; cents < 4; i++){
-                        cents = cents - 5;
-                        index = index + i;
-                        }
-                    }
-                            else if (cents < 5){   //Количество по монет номиналом 1
-                                for (i = 0; cents == 0; i++){
-                                cents = cents - 1;
-                                index = index + i;
-                                }
-                            }
-    printf ("%d\n", index);
+    cents25 = sum % 25;
+    cents10 = cents25 % 10;
+    cents5 = cents10 % 5;
+    cents1 = cents5 % 1;
+    printf ("%d\n", cents1);
+    
 }
