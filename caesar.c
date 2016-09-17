@@ -4,7 +4,6 @@
 #include <string.h> 
 #include <stdlib.h>
 
-
 int main(){
     int key = 0;
     do{
@@ -16,7 +15,6 @@ int main(){
     }
     while(key <= 0);
     printf("k = %d\n", key);
-
     char myString [100];
     printf("Print text: ");
     fgets (myString, 100, stdin);
