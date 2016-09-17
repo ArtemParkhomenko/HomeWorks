@@ -6,21 +6,17 @@
 
 
 int main(){
-    printf("You gave me number K: "); 
-    int key = 0; GetInt();   //get key 
-    return key;
-} 
-int getk(key){
+    int key = 0;
     do{
-        key = GetInt();
-        if (key == 0||key <= 0)
+        printf("You gave me number K: ");
+        key = GetInt();   //get key 
+        if (key == 0||key <= 0){
         printf("retype: ");
+        }
     }
     while(key <= 0);
     printf("k = %d\n", key);
-    return key;
-}
-int getplaintext(key){  //get plaintex, encipher, printciphertext.
+
     char myString [100];
     printf("Print text: ");
     fgets (myString, 100, stdin);
@@ -29,6 +25,5 @@ int getplaintext(key){  //get plaintex, encipher, printciphertext.
         printf("%c", myString[i]+key);
         i++;
     }
-}  
-     
+}
  
