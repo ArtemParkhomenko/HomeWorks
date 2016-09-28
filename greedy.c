@@ -1,32 +1,25 @@
-#include <stdio.h>
 #include <cs50.h>
+#include <stdio.h>
+#include <math.h>
 
-int main(void) 
-{
-    int sum = 0;  // сумма сдачи
-    int cents25 = 0; // остаток от деления на 25
-    int cents10 = 0;
-    int cents5 = 0;
-    int cents1 = 0;
-    int index25 = 0; // количсество монет номинало 25
-    int index10 = 0;
-    int index5 = 0;
-    int index1 = 0;
-    do                  // проверка на целое число больше ноля 
-    {
-        printf("You gave me number of cents: "); 
-        sum = GetInt();
-        if (sum == 0||sum <= 0)
-        printf("retype\n:");
-    }
-    while(sum <= 0); 
-    cents25 = sum % 25; // количсество монет номинало 25
-    index25 = (sum - cents25) / 25;
-    cents10 = cents25 % 10; // количсество монет номинало 10
-    index10 = (cents25 - cents10) / 10;
-    cents5 = cents10 % 5; // количсество монет номинало 5
-    index5 = (cents10 - cents5) / 5;
-    cents1 = cents5 % 1; // количсество монет номинало 1
-    index1 = (cents5 - cents1);
-    printf ("coints sum: %d\n", index25 + index10 + index5 + index1); // выводит общее количество монет
+int main(void){
+    float coints = 0;
+    int index = 0;
+    int rest = 0;
+    do{   // запрос суммы сдачи, и проверка на больше ноля
+        printf("How much money? \n"); 
+        coints = GetFloat(); 
+    }  
+    while (coints <= 0);
+    rest = round(coints * 100); // округление до ближайшего целого числа
+    index = (rest / 25); //монеты по 25
+    index = round(index);
+    rest = rest % 25; // остаток целый остаток от деления на 25
+    index = index + (rest / 10);  //монеты по 10
+    index = round(index);
+    rest = rest % 10;
+    index = index + (rest / 5); //монеты по 5
+    index = round(index);
+    rest = rest % 5;
+    printf("%d\n", index + rest); // выводит общее количество монет
 }
