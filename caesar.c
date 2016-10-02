@@ -1,26 +1,37 @@
 #include <stdio.h>
 #include <cs50.h>
+#include <string.h>
+#include <ctype.h>
 #include <stdlib.h>
-#include <string.h> 
 
-int main(){
-    int key = 0;
-    do{
-        printf("You gave me number K: ");
-        key = GetInt();   //get key 
-        if (key == 0||key <= 0){
-        printf("retype: ");
+
+void execution (int key); // прототип функции
+
+int main(int argc, string argv[]){
+    int key = atoi(argv[1]); // переменная для ключя, приведение к типу инт функцией "атои"
+    if(argc != 2 && key <= 0){  //проверка количества аргументов и ключа на <= 0
+        printf ("You have to enter the key is greater than zero. \n");
+        return 1; // в случае не выполнения одного из условий вернуть 1 
+    }
+    execution(key);
+    return 0;  
+}
+
+void execution (int key){
+    string text = get_string();
+    int length = strlen(text);
+    for(int i = 0; i < length; i++){
+        if(isalpha(text[i])){
+            if(islower(text[i])){
+                printf("%c", ((((text[i] - 'a') + key) % 26) + 'a'));
+            }
+            else{
+                printf("%c", ((((text[i] - 'A') + key) % 26) + 'A'));
+            }
+        }
+        else{
+            printf("%c", text[i]);
         }
     }
-    while(key <= 0);
-    printf("k = %d\n", key);
-    char myString [100];
-    printf("Print text: ");
-    fgets (myString, 100, stdin);
-    int i = 0;
-    while (myString[i]){
-        printf("%c", myString[i]+key);
-        i++;
-    }
+    printf("\n");
 }
- 
