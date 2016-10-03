@@ -2,36 +2,48 @@
 #include <cs50.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdlib.h>
 
-
-void execution (int key); // прототип функции
+void encryption (int key); // прототип функции
 
 int main(int argc, string argv[]){
-    int key = atoi(argv[1]); // переменная для ключя, приведение к типу инт функцией "атои"
-    if(argc != 2 && key <= 0){  //проверка количества аргументов и ключа на <= 0
-        printf ("You have to enter the key is greater than zero. \n");
+    
+    if (argc < 2 || argc > 2){  //проверка количества аргументов
+        printf ("print argument two \n");
         return 1; // в случае не выполнения одного из условий вернуть 1 
     }
-    execution(key);
+    
+    int key = atoi(argv[1]); // переменная для ключя, приведение к типу инт функцией "атои"
+    
+    if (key <= 0){ // проверка ключа на положительное число
+        printf ("print key > 0 \n");
+        return 1; // в случае не выполнения условия вернуть 1 
+    }
+    
+    encryption (key); // вызов функции шифрования
+    
     return 0;  
 }
 
-void execution (int key){
-    string text = get_string();
-    int length = strlen(text);
-    for(int i = 0; i < length; i++){
-        if(isalpha(text[i])){
-            if(islower(text[i])){
-                printf("%c", ((((text[i] - 'a') + key) % 26) + 'a'));
+void encryption (int key){
+    
+    printf ("plaintext: "); // приглашение на ввод
+    string plaintext = get_string(); // принимаем строку
+    int lengthString = strlen (plaintext); // определяем длинну строки
+    printf ("ciphertext: "); //вывод шифрованого текста
+    
+    for (int i = 0; i < lengthString; i++){ // цыкл шифрования
+        if (isalpha (plaintext[i])){ // проверк на наличие символа в алфавите
+            if (islower (plaintext[i])){ // проверка прописных и строчных символов
+                printf ("%c", ((((plaintext[i] - 'a') + key) % 26) + 'a')); // шифрование маленьких букв
             }
-            else{
-                printf("%c", ((((text[i] - 'A') + key) % 26) + 'A'));
+            else {
+                printf ("%c", ((((plaintext[i] - 'A') + key) % 26) + 'A')); //шифрование больших букв
             }
         }
-        else{
-            printf("%c", text[i]);
+        else {
+            printf ("%c", plaintext[i]); // вывод результата
         }
     }
-    printf("\n");
+    
+    printf ("\n");
 }
