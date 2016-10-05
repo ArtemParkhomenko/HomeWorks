@@ -41,7 +41,7 @@ void encryption (int key){
             }
         }
         else {
-            printf ("%c", plaintext[i]); // вывод результата
+            printf ("%c", plaintext[i]); 
         }
     }
     
